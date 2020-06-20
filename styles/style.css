@@ -11,9 +11,9 @@ html, body {
     
     position: relative;
 
-    --hours-full-rotation:      5400s;  /* 8 times faster. Real-time 43200 s */
-    --minutes-full-rotation:    450s;   /* 8 times faster. Real-time 3600 s */  
-    --seconds-full-rotation:    7.5s;   /* 8 times faster. Real-time 60 s */
+    --hours-full-rotation:      43200s;
+    --minutes-full-rotation:    3600s;
+    --seconds-full-rotation:    60s;
 }
 
 .clock-arm {
@@ -87,6 +87,7 @@ html, body {
     width: 0.5%;
     top: 10%;
     animation-duration: var(--seconds-full-rotation);
+    animation-timing-function: steps(60);
     z-index: 2;
     left: 49.75%; /* (100-0.5) / 2 = 49.75 */
 }
