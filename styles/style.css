@@ -1,0 +1,98 @@
+html, body {
+    height: 100%
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    background: url("https://cssanimation.rocks/images/posts/clocks/ios_clock.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    
+    position: relative;
+
+    --hours-full-rotation:      5400s;  /* 8 times faster. Real-time 43200 s */
+    --minutes-full-rotation:    450s;   /* 8 times faster. Real-time 3600 s */  
+    --seconds-full-rotation:    7.5s;   /* 8 times faster. Real-time 60 s */
+}
+
+.clock-arm {
+    margin: 0 auto;
+    transform-origin: bottom; /* pivot point */
+    animation-name: rotate;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+
+    position: absolute;
+    left: 49.25%; /* (100-1.5) / 2 = 49.25 */
+
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+}
+
+.second::before {
+    content: "";
+    width: 100%;
+    height: 3%;
+    background-color: red;
+    border-radius: 50%;
+    position: absolute;
+    top: 98%;
+    z-index: 2;
+}
+
+.minute::before{
+    content: "";
+    width: 100%;
+    height: 3%;
+    background-color: black;
+    border-radius: 50%;
+    position: absolute;
+    top: 98%;
+    z-index: 1;
+}
+
+.hour::before{
+    content: "";
+    width: 100%;
+    height: 3%;
+    background-color: black;
+    border-radius: 50%;
+    position: absolute;
+    top: 98%;
+    z-index: 0;
+}
+
+.hour {
+    background-color: black;
+    height: 35%;
+    width: 1.5%;
+    top: 15%;
+    animation-duration: var(--hours-full-rotation);
+    z-index: 0;
+}
+
+.minute {
+    background-color: black;
+    height: 45%;
+    width: 1.5%;
+    top: 5%;
+    animation-duration: var(--minutes-full-rotation);
+    z-index: 1;
+}
+
+.second {
+    background-color: red;
+    height: 40%;
+    width: 0.5%;
+    top: 10%;
+    animation-duration: var(--seconds-full-rotation);
+    z-index: 2;
+    left: 49.75%; /* (100-0.5) / 2 = 49.75 */
+}
+
+@keyframes rotate {
+    100% {
+        transform: rotate(360deg);
+    }
+}   
